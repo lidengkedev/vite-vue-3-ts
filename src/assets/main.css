@@ -1,0 +1,45 @@
+@import './base.css';
+
+#app {
+  margin: 0 auto;
+  padding: 1rem;
+  height: 100%;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+/* 查询 */
+.search-warpper {
+  padding: 15px;
+  background-color: #F8F8F8;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.search-warpper .search-inner {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.search-warpper .search-title {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 10px;
+  margin-right: 10px;
+}
+.search-warpper .search-input {
+  display: inline-block;
+  vertical-align: middle;
+}
