@@ -16,6 +16,7 @@ const handleSearch = () => {
   console.log(search)
 }
 const is_show_dialog = ref(false)
+const form_type = ref('add')
 const handleReset = () => {
   search.name = ''
   search.year = ''
@@ -25,13 +26,16 @@ const handleReset = () => {
 }
 const handleAdd = () => {
   is_show_dialog.value = true
+  form_type.value = 'add'
 }
 const handleUpdate = (value: boolean) => {
   is_show_dialog.value = value
 }
 const handleSure = () => {
   is_show_dialog.value = false
-  tableData.push(form)
+  if (form_type.value === 'add') {
+    tableData.push(form)
+  }
 }
 const handleCancel = () => {
   is_show_dialog.value = false
@@ -42,6 +46,7 @@ const handleEdit = (row: ITableItem) => {
   form.date = row.date
   form.remark = row.remark
   is_show_dialog.value = true
+  form_type.value = 'edit'
 }
 const handleDelete = (row: ITableItem, index: number) => {
   tableData.splice(index, 1)
@@ -97,27 +102,29 @@ const handleDelete = (row: ITableItem, index: number) => {
           <th>操作</th>
         </tr>
       </table>
-      <table border="1" class="table-body">
-        <colgroup>
-          <col width="60">
-          <col width="100">
-          <col width="100">
-          <col width="100">
-          <col width="100">
-          <col width="100">
-        </colgroup>
-        <tr v-for="(td, index) in tableData" :key="index">
-          <td align="center">{{ index + 1 }}</td>
-          <td>{{ td.name }}</td>
-          <td align="right">{{ td.price }}</td>
-          <td align="center">{{ td.date }}</td>
-          <td>{{ td.remark }}</td>
-          <td>
-            <button data-type="text" @click="handleEdit(td)">修改</button>
-            <button data-type="text" @click="handleDelete(td, index)">删除</button>
-          </td>
-        </tr>
-      </table>
+      <div class="table-body__warpper">
+        <table border="1" class="table-body">
+          <colgroup>
+            <col width="60">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+            <col width="100">
+          </colgroup>
+          <tr v-for="(td, index) in tableData" :key="index">
+            <td align="center">{{ index + 1 }}</td>
+            <td>{{ td.name }}</td>
+            <td align="right">{{ td.price }}</td>
+            <td align="center">{{ td.date }}</td>
+            <td>{{ td.remark }}</td>
+            <td>
+              <button data-type="text" @click="handleEdit(td)">修改</button>
+              <button data-type="text" @click="handleDelete(td, index)">删除</button>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
     <comp-dialog :visiable="is_show_dialog" title="新增" width="40%" @update:visiable="handleUpdate">
       <div class="form-warpper">
@@ -174,6 +181,10 @@ const handleDelete = (row: ITableItem, index: number) => {
 .table-header,
 .table-body {
   width: 100%;
+}
+.table-body__warpper {
+  height: 75vh;
+  overflow: hidden auto;
 }
 .form-warpper .form-inner {
   margin-bottom: 20px;
