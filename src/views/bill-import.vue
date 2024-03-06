@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import router from '@/router';
 import { reactive } from 'vue';
+import UploadFile from '@/components/upload-file.vue'
 
 let tableData: { name: string }[] = reactive([])
 
 /** 导入 */
-const handleImport = () => {
-  tableData.push({ name: '2017年账单明细.xlsx' })
+const handleUpload = (file: File) => {
+  tableData.push({ name: file.name })
 }
 /** 查看 */
 const handleInfo = (index: number) => {
@@ -15,7 +16,7 @@ const handleInfo = (index: number) => {
 }
 /** 删除 */
 const handleDelete = (index: number) => {
-  alert('删除:' + index)
+  tableData.splice(index, 1)
 }
 </script>
 
@@ -23,8 +24,9 @@ const handleDelete = (index: number) => {
   <div class="report-import">
     <div class="form-warpper">
       <div class="form-item">
-        <input type="file" name="">
-        <button data-type="primary" @click="handleImport">导入</button>
+        <!-- <input type="file" name="">
+        <button data-type="primary" @click="handleImport">导入</button> -->
+        <upload-file @on-upload="handleUpload"></upload-file>
       </div>
     </div>
     <div class="table-warpper">
