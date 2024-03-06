@@ -126,7 +126,7 @@ const handleExport = () => {
         <tr>
           <th>序号</th>
           <th>名称</th>
-          <th>价格</th>
+          <th>价格（元）</th>
           <th>日期</th>
           <th>备注</th>
           <th>操作</th>
@@ -166,7 +166,7 @@ const handleExport = () => {
             <col width="100">
           </colgroup>
           <tr>
-            <td align="center">-</td>
+            <td align="center">合计</td>
             <td>-</td>
             <td align="right">{{ totalPrice }}</td>
             <td align="center">-</td>
