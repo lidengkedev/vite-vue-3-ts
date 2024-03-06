@@ -12,7 +12,7 @@ const router = createRouter({
       children: [
         { path: 'home', component: () => import('../views/home-page.vue') },
         { path: 'bill', component: () => import('../views/bill-page.vue') },
-        { path: 'import', component: () => import('../views/bill-import.vue') },
+        { path: 'import', component: () => import('../views/bill-upload.vue') },
         { path: 'detail', component: () => import('../views/bill-detail.vue') }
       ]
     }

@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, defineProps } from 'vue'
+
+defineProps({
+  accept: String
+})
+
 let filename = ref('请选择上传文件！')
 const file = ref()
 
@@ -32,7 +37,7 @@ const handleClose = () => {
     <div class="file-name">{{ filename }}<span class="icon-close" @click="handleClose">&times;</span></div>
     <button data-type="primary" class="upload-btn" @click="handleUpload">文件上传</button>
   </div>
-  <input ref="file" type="file" hidden>
+  <input ref="file" type="file" :accept="accept" hidden>
 </template>
 
 <style scoped>

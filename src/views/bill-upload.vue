@@ -26,7 +26,7 @@ const handleDelete = (index: number) => {
       <div class="form-item">
         <!-- <input type="file" name="">
         <button data-type="primary" @click="handleImport">导入</button> -->
-        <upload-file @on-upload="handleUpload"></upload-file>
+        <upload-file accept=".xlsx,.xls" @on-upload="handleUpload"></upload-file>
       </div>
     </div>
     <div class="table-warpper">
