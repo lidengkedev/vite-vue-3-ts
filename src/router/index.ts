@@ -11,9 +11,10 @@ const router = createRouter({
       component: Layout,
       children: [
         { path: 'home', component: () => import('../views/home-page.vue') },
-        { path: 'bill', component: () => import('../views/bill-page.vue') },
-        { path: 'import', component: () => import('../views/bill-upload.vue') },
-        { path: 'detail', component: () => import('../views/bill-detail.vue') }
+        { path: 'bill-manage', component: () => import('../views/bill/bill-manage.vue') },
+        { path: 'bill-import', component: () => import('../views/bill/bill-upload.vue') },
+        { path: 'bill-detail', component: () => import('../views/bill/bill-detail.vue') },
+        { path: 'bill-trend', component: () => import('../views/bill/bill-trend.vue') }
       ]
     }
   ]
